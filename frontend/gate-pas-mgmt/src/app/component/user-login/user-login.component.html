@@ -1,1 +1,16 @@
-<p>user-login works!</p>
+<span>{{ alerttext }}</span>
+
+<div class="form-container">
+    <h2>User Login</h2>
+  <form class="user-login-form">
+    <mat-form-field class="form-field">
+      <mat-label>Student Id</mat-label>
+      <input matInput placeholder="Enter Your Id" class="form-input" [formControl]="id"/>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Enter Your Password" class="form-input" [formControl]="password"/>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="primary" (click)="onLogIn()">Log In</button>
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-login',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-login.component.scss']
 })
 export class UserLoginComponent {
+  alerttext = '';
+  id = new FormControl("");
+  password = new FormControl("");
 
+  onLogIn() {
+    const id = this.id.value;
+    const password = this.password.value;
+    if (id === "" || password === "") {
+      this.alerttext = (id === ""? "Student Id": "Password") + " cannot be empty";
+      setTimeout(() => {
+        this.alerttext = "";
+      }, 1000)
+      return;
+    }
+  }
 }
