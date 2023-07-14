@@ -9,14 +9,14 @@ import { FormControl } from '@angular/forms';
 export class UserLoginComponent {
   alerttext = "";
   alertBgColor = "";
-  id = new FormControl("");
+  username = new FormControl("");
   password = new FormControl("");
 
   onLogIn() {
-    const id = this.id.value;
+    const username = this.username.value;
     const password = this.password.value;
-    if (id === "" || password === "") {
-      this.alerttext = (id === ""? "Student Id": "Password") + " cannot be empty";
+    if (username === "" || password === "") {
+      this.alerttext = (username === ""? "Student username": "Password") + " cannot be empty";
       this.alertBgColor = "white";
       setTimeout(() => {
         this.alerttext = "";
