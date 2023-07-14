@@ -2,9 +2,18 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
 }
 
+.background-container {
+    height: 100%;
+    background-image: url("../../../assets/backgroundImage.jpg");
+    background-size: cover;                      
+    background-repeat: no-repeat;
+    background-position: center center;              
+}
+
 .form-container {
+    background-color: white;
     position: fixed;
-    top: 50%;
+    top: 45%;
     left: 50%; 
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); 
@@ -14,12 +23,12 @@
     align-items: center;
     justify-content: center;
     // border: 1px solid black;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
     transition: box-shadow 0.3s ease;
 }
 
 .form-container:hover {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.45);
 }
 
 .user-login-form {
@@ -37,14 +46,14 @@ button {
     margin-bottom: 1rem;
 }
 
-h2 {
+h1 {
     margin-top: 1rem;
     color: rgb(12, 12, 120);
 }
 
 span {
     position: fixed;
-    top: 25%;
+    top: 20%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
