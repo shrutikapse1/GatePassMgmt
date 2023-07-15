@@ -13,12 +13,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './component/admin-login/admin-login.component';
+import { HomeComponent } from './component/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
