@@ -1,24 +1,30 @@
 package com.bnym.gatepass.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bnym.gatepass.models.Admin;
+import com.bnym.gatepass.models.ApprovalRequest;
 import com.bnym.gatepass.models.LeaveRequest;
 import com.bnym.gatepass.service.AdminService;
-
+import com.bnym.gatepass.service.LeaveRequestService;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	LeaveRequestService leaveRequestService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ResponseEntity<Object> adminLogin(@RequestParam("email_id") String emailId,
@@ -70,4 +76,22 @@ public class AdminController {
 			return ResponseEntity.ok(leaveRequests);
 		}
 	}
+	
+	@RequestMapping(value = "/approval", method = RequestMethod.POST)
+	public ResponseEntity<String> adminApproval(@RequestBody ApprovalRequest approvalRequest) {
+		LocalDateTime updatedAt =LocalDateTime.now();
+	    int status = leaveRequestService.adminApproval(
+	        approvalRequest.getLeaveRequestId(),
+	        approvalRequest.getStatus(),
+	        approvalRequest.getApprovedBy(),
+	        updatedAt
+	    );
+
+	    if (status > 0) {
+	        return ResponseEntity.ok("Successful");
+	    } else {
+	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid");
+	    }
+	}
+
 }
