@@ -43,4 +43,7 @@ public interface LeaveRequestRepository extends JpaRepository<LeaveRequest, Inte
                            @Param("status") String status,
                            @Param("updated_at") LocalDateTime updated_at);
 
+    @Query(value ="select * from leave_requests lr where lr.status=\"PENDING\"", nativeQuery = true)
+    List<LeaveRequest> getLeaveRequestsByStatus_Pending();
+
 }

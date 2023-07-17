@@ -16,4 +16,5 @@ public interface AdminService {
 
 	public Admin findByEmailIdAndPasswordHash(String emailId, String passwordHash);
 
+	public List<LeaveRequest> getPendingRequests();
 }

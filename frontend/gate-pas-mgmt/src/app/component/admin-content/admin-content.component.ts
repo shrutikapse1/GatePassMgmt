@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LeaveRequest } from 'src/app/data-models';
+import { LeaveRequest, RequestStatus } from 'src/app/data-models';
 import { DataService } from 'src/app/service/data.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -33,7 +33,20 @@ export class AdminContentComponent implements OnInit {
   
   TogglependingReqClicked()
   {
-    this.pendingReqClicked=!this.pendingReqClicked;
+    if(this.pendingReqClicked==false)
+    {
+      this.dataservice.getAllPendingRequests().subscribe(
+        resp=>{
+          this.requests=resp;
+          this.pendingReqClicked=!this.pendingReqClicked;
+        }
+      );
+    }
+    else
+    {
+      this.pendingReqClicked=!this.pendingReqClicked;
+
+    }
   }
 
   TogglestudentReqClicked()
@@ -81,7 +94,7 @@ export class AdminContentComponent implements OnInit {
          //calculate the requestListAgain
 
         //send a message to student-content to recalculate the request list
-        this.dataservice.postAdminApproval(requestId,'rejected',this.adminname).subscribe(
+        this.dataservice.postAdminApproval(2, 'REJECTED' ,this.adminname).subscribe(
           resp=>{
             console.log(resp);
             console.log('succesfully rejected');

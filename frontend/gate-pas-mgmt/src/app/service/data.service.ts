@@ -41,16 +41,19 @@ export class DataService {
   }
 
   postAdminApproval(leaveRequestId: number, status: string, approvedBy: string) {
-    let approvalRequest: ApprovalRequest = {leaveRequestId, status, approvedBy};
-    return this.http.post(API_URL_ADMIN + '/approval', approvalRequest);
+    let httpParams = new HttpParams();
+    httpParams = httpParams.append("request_id", leaveRequestId);
+    httpParams = httpParams.append("status", status);
+    httpParams = httpParams.append("approved_by", approvedBy);
+    return this.http.post(API_URL_ADMIN + '/approval', null, {params: httpParams});
   }
 
-  postSubmitRequestForm(studentId: number, startDate: Date, endDate: Date, reason: string) {
+  postSubmitRequestForm(studentId: number, startDate: string, endDate: string, reason: string) {
     let httpParams = new HttpParams();
     httpParams = httpParams.append("studentid", studentId);
-    httpParams = httpParams.append("start_date", startDate.toISOString());
-    httpParams = httpParams.append("end_date", endDate.toISOString());
+    httpParams = httpParams.append("start_date", startDate);
+    httpParams = httpParams.append("end_date", endDate);
     httpParams = httpParams.append("reason", reason);
-    return this.http.post(API_URL_STUDENT + '/approval', null, {params: httpParams})
+    return this.http.post(API_URL_STUDENT + '/submit', null, {params: httpParams})
   }
 }

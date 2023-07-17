@@ -11,7 +11,7 @@ import { DataService } from 'src/app/service/data.service';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.scss']
 })
-export class UserLoginComponent implements OnInit{
+export class UserLoginComponent{
   alerttext = "";
   alertBgColor = "";
   username = new FormControl("");
@@ -23,20 +23,14 @@ export class UserLoginComponent implements OnInit{
     division: '',
     rollNo: '',
     email_id: ''
-  };;
+  };
 
-  constructor(public router: Router, public dataService: DataService, public authService: AuthService) {
+  constructor(public router: Router, public authService: AuthService) {
   } 
 
-  ngOnInit(): void {
-    this.authService.studentLogin('shruti@gmail.com', 'shruti123').subscribe((data) => {
-      this.student = data;
-    });
-  }
-
   onLogIn() {
-    const username = this.username.value;
-    const password = this.password.value;
+    const username = <string>this.username.value;
+    const password = <string>this.password.value;
 
     if (username === "" || password === "") {
       this.alerttext = (username === ""? "Student username": "Password") + " cannot be empty";
@@ -47,6 +41,20 @@ export class UserLoginComponent implements OnInit{
       }, 1000)
       return;
     }
-    this.router.navigate(['/app-student-content',this.student.studentID]);
+
+    this.authService.studentLogin(username, password).subscribe({
+      next: (data) => {
+      this.student = data;
+      this.router.navigate(['/app-student-content',data.studentID]);
+      }, 
+      error: () => {
+        this.alerttext = "Invalid username or password";
+        this.alertBgColor = "white";
+        setTimeout(() => {
+          this.alerttext = "";
+          this.alertBgColor = "";
+        }, 1000)
+      }
+    });
   }
 }

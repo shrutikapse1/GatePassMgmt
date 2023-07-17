@@ -64,7 +64,16 @@ export class StudentContentComponent implements OnInit {
     console.log(this.myForm.value.leaveStartDate);
 
     const formData = this.myForm.value;
-    this.dataservice.postSubmitRequestForm(formData.studentId,formData.leaveStartDate,formData.leaveEndDate,formData.reason);
+    this.dataservice.postSubmitRequestForm(123 ,'2023-07-29', '2023-07-31','sick').subscribe({
+      next: (response) => {
+        console.log('POST request successful', response);
+        // Handle the response as needed
+      },
+      error: error => {
+        console.error('Error occurred during POST request', error);
+        // Handle the error as needed
+      }
+    });
     alert('successful submission, you would now be redirected back to home page');
     this.ToggleonmakeNewReqClicked();
 
@@ -90,12 +99,5 @@ export class StudentContentComponent implements OnInit {
       // Use the data in Component2
 
     });
-
-    
-
   }
- 
-
-  
- 
 }

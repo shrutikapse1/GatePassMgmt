@@ -22,7 +22,7 @@ import com.bnym.gatepass.service.LeaveRequestService;
 public class AdminController {
 	@Autowired
 	AdminService adminService;
-	
+
 	@Autowired
 	LeaveRequestService leaveRequestService;
 
@@ -76,22 +76,24 @@ public class AdminController {
 			return ResponseEntity.ok(leaveRequests);
 		}
 	}
-	
-	@RequestMapping(value = "/approval", method = RequestMethod.POST)
-	public ResponseEntity<String> adminApproval(@RequestBody ApprovalRequest approvalRequest) {
-		LocalDateTime updatedAt =LocalDateTime.now();
-	    int status = leaveRequestService.adminApproval(
-	        approvalRequest.getLeaveRequestId(),
-	        approvalRequest.getStatus(),
-	        approvalRequest.getApprovedBy(),
-	        updatedAt
-	    );
 
-	    if (status > 0) {
-	        return ResponseEntity.ok("Successful");
-	    } else {
-	        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid");
-	    }
+	@RequestMapping(value = "/approval", method = RequestMethod.POST)
+	public ResponseEntity<String> adminApproval(@RequestParam("request_id") int request_id, @RequestParam("status") String status,@RequestParam("approved_by") String approved_by) {
+		LocalDateTime updatedAt =LocalDateTime.now();
+
+		int status1 =leaveRequestService.adminApproval(request_id, status, approved_by, updatedAt);
+
+		if (status1 > 0) {
+			return ResponseEntity.ok("Successful");
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid");
+		}
 	}
 
+	@RequestMapping(value="/leaveHistory/allpending", method= RequestMethod.GET)
+	public List<LeaveRequest> readAllPendingRequests() throws Exception {
+		List<LeaveRequest> leaveRequests=adminService.getPendingRequests();
+		if(leaveRequests==null) throw new Exception("No Pending Request till now ");
+		return leaveRequests;
+	}
 }

@@ -1,6 +1,7 @@
 package com.bnym.gatepass.controllers;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -36,11 +37,14 @@ public class StudentController {
 
 	@RequestMapping(value = "/submit", method = RequestMethod.POST)
 	public ResponseEntity<String> submitRequestForm(@RequestParam("studentid") int studentId,
-			@RequestParam("start_date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
-			@RequestParam("end_date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
-			@RequestParam("reason") String reason) {
+													@RequestParam("start_date") String startDate,
+													@RequestParam("end_date")  String endDate,
+													@RequestParam("reason") String reason) {
 		LocalDate createdAt = LocalDate.now();
-		int status = leaveRequestService.submitRequestForm(studentId, startDate, endDate, reason, "PENDING",createdAt);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate startDate1=LocalDate.parse(startDate, formatter);
+		LocalDate endDate1=LocalDate.parse(endDate, formatter);
+		int status = leaveRequestService.submitRequestForm(studentId, startDate1, endDate1, reason, "PENDING",createdAt);
 		if (status > 0) {
 			return ResponseEntity.ok("Successfull");
 
@@ -49,9 +53,4 @@ public class StudentController {
 
 		}
 	}
-	
-	
-	
-	
-
 }

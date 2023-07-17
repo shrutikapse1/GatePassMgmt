@@ -38,4 +38,8 @@ public class AdminServiceImpl implements AdminService {
 	public Admin findByEmailIdAndPasswordHash(String emailId, String passwordHash) {
 		return adminRepository.findByEmailIdAndPasswordHash(emailId, passwordHash);
 	}
+
+	public List<LeaveRequest> getPendingRequests() {
+		return leaveRequestRepository.getLeaveRequestsByStatus_Pending();
+	}
 }
