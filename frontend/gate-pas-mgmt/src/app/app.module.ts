@@ -19,6 +19,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { AdminContentComponent } from './component/admin-content/admin-content.component';
+import { HttpClientModule } from '@angular/common/http'
+import { DataService } from './service/data.service';
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { AdminContentComponent } from './component/admin-content/admin-content.c
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
@@ -45,7 +49,7 @@ import { AdminContentComponent } from './component/admin-content/admin-content.c
     MatButtonModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DataService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
