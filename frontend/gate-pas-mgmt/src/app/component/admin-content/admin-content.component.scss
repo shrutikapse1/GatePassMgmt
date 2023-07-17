@@ -1,0 +1,33 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-row:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .mat-header-cell,
+  .mat-cell {
+    padding: 8px;
+  }
+  
+  .mat-header-row {
+    background-color: #eee;
+  }
+  
+  .mat-cell button {
+    margin-right: 4px;
+  }
+  
+
+  .lookup-form {
+    max-width: 400px;
+    margin: 0 ;
+    margin-left: 0;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  

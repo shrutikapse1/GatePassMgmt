@@ -1,0 +1,33 @@
+<div class="headings">
+  <h1>Children's Home - Little Flower</h1>
+  <h2>Hostel Gatepass Management System</h2>
+</div>
+<div class="background-container">
+  <span>{{ alerttext }}</span>
+  <div class="form-container">
+    <h1 class="login-heading">User Login</h1>
+    <form class="user-login-form">
+      <mat-form-field class="form-field">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          placeholder="Enter Username"
+          class="form-input"
+          [formControl]="username"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Enter Password"
+          class="form-input"
+          [formControl]="password"
+        />
+      </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" (click)="onLogIn()">
+      Log In
+    </button>
+  </div>
+</div>
