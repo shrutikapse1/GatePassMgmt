@@ -1,13 +1,8 @@
 package com.bnym.gatepass.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.bnym.gatepass.models.Student;
 
-import com.bnym.gatepass.Repositories.StudentRepository;
+public interface UserService {
 
-@Service
-public class UserService {
-     @Autowired 
-    private StudentRepository studentRepository;
-
+	public Student findByEmailIdAndPasswordHash(String emailId, String passwordHash);
 }

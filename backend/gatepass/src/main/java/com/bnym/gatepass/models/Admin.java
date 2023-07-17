@@ -10,8 +10,8 @@ public class Admin {
     @Column(name = "email_id", nullable = false, unique = true) // Set username as unique and not null
     private String email_id;
 
-    @Column(name = "adminFullName",nullable = false)
-    private String adminFullName;
+    @Column(name = "admin_full_name",nullable = false)
+    private String admin_full_name;
 
     @Column(name = "password_hash", nullable = false) // Set password as not null
     private String passwordHash;
@@ -19,9 +19,9 @@ public class Admin {
     public Admin() {
     }
 
-    public Admin(String email_id, String adminFullName, String passwordHash) {
+    public Admin(String email_id, String admin_full_name, String passwordHash) {
         this.email_id = email_id;
-        this.adminFullName = adminFullName;
+        this.admin_full_name = admin_full_name;
         this.passwordHash = passwordHash;
     }
 
@@ -36,11 +36,11 @@ public class Admin {
 	}
     
     public String getAdminFullName() {
-        return adminFullName;
+        return admin_full_name;
     }
 
-	public void setAdminFullName(String adminFullName) {
-        this.adminFullName = adminFullName;
+	public void setAdminFullName(String admin_full_name) {
+        this.admin_full_name = admin_full_name;
     }
 
     public String getPasswordHash() {

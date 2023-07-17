@@ -10,6 +10,9 @@ public class LeaveRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="LeaveRequestId")
+    private int LeaveRequestId;
+
     @Column(name = "studentID")
     private int studentID;
 
@@ -35,6 +38,14 @@ public class LeaveRequest {
 
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
+
+    public int getLeaveRequestId() {
+        return LeaveRequestId;
+    }
+
+    public void setLeaveRequestId(int leaveRequestId) {
+        LeaveRequestId = leaveRequestId;
+    }
 
     @ManyToOne
     @JoinColumn(name = "approvedBy")
@@ -128,4 +139,5 @@ public class LeaveRequest {
     public void setApprovedBy(Admin approvedBy) {
         this.approvedBy = approvedBy;
     }
+
 }
