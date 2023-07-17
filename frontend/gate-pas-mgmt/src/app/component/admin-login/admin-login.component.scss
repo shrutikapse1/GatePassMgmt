@@ -1,0 +1,85 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+}
+
+.headings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    height: 12%;
+    background-image: linear-gradient(to right, #03045e, #023e8a, #0077b6);
+    color: white;
+}
+
+h1 {
+    font-size: xx-large;
+}
+
+h2 {
+    font-size: x-large;
+}
+
+.background-container {
+    height: 88%;
+    background-image: url("../../../assets/background6.jpg");
+    background-size: cover;                      
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.form-container {
+    background-color: white;
+    position: fixed;
+    top: 45%;
+    left: 50%; 
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // border: 1px solid black;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-container:hover {
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.9);
+}
+
+.admin-login-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: 1rem;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+button {
+    margin-bottom: 2rem;
+    width: 8rem;
+    font-size: large;
+}
+
+.login-heading {
+    margin-top: 1rem;
+    color: rgb(12, 12, 120);
+}
+
+span {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 40%;
+    color: rgb(153, 31, 31);
+    text-align: center;
+    font-size: large;
+}
