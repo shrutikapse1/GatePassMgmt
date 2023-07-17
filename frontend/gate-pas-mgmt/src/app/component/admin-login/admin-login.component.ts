@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Admin } from 'src/app/data-models';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,6 +13,8 @@ export class AdminLoginComponent {
   alertBgColor = "";
   username = new FormControl("");
   password = new FormControl("");
+  admin:Admin={email_id:'abc@gmail.com',
+    admin_full_name:'FirstAdmin'};
 
   constructor(public router: Router) {} 
 
@@ -28,6 +31,6 @@ export class AdminLoginComponent {
       }, 1000)
       return;
     }
-    this.router.navigate(['/', 'app-admin-content']);
+    this.router.navigate(['/app-admin-content',this.admin.admin_full_name]);
   }
 }

@@ -9,25 +9,25 @@
 
 <div *ngIf="requests">
 <table mat-table [dataSource]="requests" class="mat-elevation-z8">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let request">{{ request.id }}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="studentName">
-      <th mat-header-cell *matHeaderCellDef>Student Name</th>
-      <td mat-cell *matCellDef="let request">{{ request.studentName }}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="class">
-      <th mat-header-cell *matHeaderCellDef>Class</th>
-      <td mat-cell *matCellDef="let request">{{ request.class }}</td>
-    </ng-container>
-  
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let request">{{ request.status }}</td>
-    </ng-container>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let request">{{ request.studentID }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="startdate">
+    <th mat-header-cell *matHeaderCellDef>Start Date</th>
+    <td mat-cell *matCellDef="let request">{{ request.startDate }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="enddate">
+    <th mat-header-cell *matHeaderCellDef>End Date</th>
+    <td mat-cell *matCellDef="let request">{{ request.endDate }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let request">{{ request.status }}</td>
+  </ng-container>
   
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
@@ -37,8 +37,8 @@
       </td>
     </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="['id', 'studentName', 'class', 'status', 'actions']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['id', 'studentName', 'class', 'status', 'actions']"></tr>
+    <tr mat-header-row *matHeaderRowDef="['id', 'startdate', 'enddate', 'status', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'startdate', 'enddate', 'status', 'actions']"></tr>
   </table>
 </div>
 <button mat-raised-button color="primary" (click)="TogglependingReqClicked()">
@@ -67,20 +67,20 @@
     <button mat-raised-button color="primary" type="submit" [disabled]="lookupForm.invalid">Lookup</button>
   </form>
    <div *ngIf="studentIdEntered">
-  <table mat-table [dataSource]="studentRequests" class="mat-elevation-z8" *ngIf="studentRequests">
+  <table mat-table [dataSource]="studentRequests" class="mat-elevation-z8" >
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let request">{{ request.id }}</td>
+      <td mat-cell *matCellDef="let request">{{ request.studentID }}</td>
     </ng-container>
   
-    <ng-container matColumnDef="studentName">
-      <th mat-header-cell *matHeaderCellDef>Student Name</th>
-      <td mat-cell *matCellDef="let request">{{ request.name }}</td>
+    <ng-container matColumnDef="startdate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let request">{{ request.startDate }}</td>
     </ng-container>
   
-    <ng-container matColumnDef="class">
-      <th mat-header-cell *matHeaderCellDef>Class</th>
-      <td mat-cell *matCellDef="let request">{{ request.class }}</td>
+    <ng-container matColumnDef="enddate">
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let request">{{ request.endDate }}</td>
     </ng-container>
   
     <ng-container matColumnDef="status">
@@ -88,8 +88,8 @@
       <td mat-cell *matCellDef="let request">{{ request.status }}</td>
     </ng-container>
   
-    <tr mat-header-row *matHeaderRowDef="['id', 'studentName', 'class', 'status']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['id', 'studentName', 'class', 'status']"></tr>
+    <tr mat-header-row *matHeaderRowDef="['id', 'startdate', 'enddate', 'status']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'startdate', 'enddate', 'status']"></tr>
   </table>
 
   <br>

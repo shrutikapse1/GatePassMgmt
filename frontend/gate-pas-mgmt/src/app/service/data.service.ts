@@ -12,6 +12,10 @@ export class DataService {
 
   constructor(public http: HttpClient) { }
   
+
+  getAllPendingRequests() {
+    return this.http.get<LeaveRequest[]>(API_URL_ADMIN + '/leaveHistory/allpending');
+  }
   getAllRequestsByStudentId(studentId: string) {
     let httpParams = new HttpParams();
     httpParams = httpParams.append("studentid", studentId);

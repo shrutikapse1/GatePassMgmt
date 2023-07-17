@@ -17,7 +17,7 @@ export class UserLoginComponent implements OnInit{
   username = new FormControl("");
   password = new FormControl("");
   student: Student = {
-    studentID: 0,
+    studentID: 1,
     studentFullName: '',
     className: '',
     division: '',
@@ -47,6 +47,6 @@ export class UserLoginComponent implements OnInit{
       }, 1000)
       return;
     }
-    this.router.navigate(['/', 'app-student-content']);
+    this.router.navigate(['/app-student-content',this.student.studentID]);
   }
 }
