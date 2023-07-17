@@ -6,16 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.bnym.gatepass.models.Student;
 import com.bnym.gatepass.service.LeaveRequestService;
 import com.bnym.gatepass.service.UserService;
 
 @RestController
+@CrossOrigin(origins="**", allowedHeaders = "**")
 @RequestMapping("/student")
 public class StudentController {
 	@Autowired
@@ -24,6 +22,7 @@ public class StudentController {
 	@Autowired
 	LeaveRequestService leaveRequestService;
 
+	@CrossOrigin(origins = "http://localhost:8090")
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ResponseEntity<Object> studentLogin(@RequestParam("email_id") String emailId,
 			@RequestParam("password_hash") String passwordHash) {
