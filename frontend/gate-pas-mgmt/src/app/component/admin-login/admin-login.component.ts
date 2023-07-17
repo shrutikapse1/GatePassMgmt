@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,9 +13,12 @@ export class AdminLoginComponent {
   username = new FormControl("");
   password = new FormControl("");
 
+  constructor(public router: Router) {} 
+
   onLogIn() {
     const username = this.username.value;
     const password = this.password.value;
+
     if (username === "" || password === "") {
       this.alerttext = (username === ""? "Admin username": "Password") + " cannot be empty";
       this.alertBgColor = "white";
@@ -24,5 +28,6 @@ export class AdminLoginComponent {
       }, 1000)
       return;
     }
+    this.router.navigate(['/', 'app-admin-content']);
   }
 }

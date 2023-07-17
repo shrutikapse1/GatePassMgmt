@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './component/user-login/user-login.component';
@@ -14,15 +13,27 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './component/admin-login/admin-login.component';
 import { HomeComponent } from './component/home/home.component';
+import { StudentContentComponent } from './component/student-content/student-content.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { AdminContentComponent } from './component/admin-content/admin-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
     AdminLoginComponent,
-    HomeComponent
+    HomeComponent,
+    StudentContentComponent,
+    AdminContentComponent
   ],
   imports: [
+    MatTableModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
